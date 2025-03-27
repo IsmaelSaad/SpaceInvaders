@@ -1,10 +1,5 @@
-let dom = $(document);
-
-dom.ready(main);
-
-function main() {
-
-}
-
+document.addEventListener("DOMContentLoaded", function() {
+    startGame();
+});
 
 
