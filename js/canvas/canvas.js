@@ -26,11 +26,9 @@ var myEnemy = new object(50, 200, "./media/enemy.png");
 var myEnemy2 = new object(500, 200, "./media/enemy.png");
 
 function updateGame() { 
-    // Antes del frame
     viewport.clear();
     viewport.frameNo++;
 
-    // Después del frame
     myEnemy.drawObject(viewport.context);
     myEnemy.detectCollision(myEnemy2);
 }
@@ -38,3 +36,4 @@ function updateGame() {
 function intervaloPermitido(n) {
     return (viewport.frameNo / n) % 1 === 0;
 }
+
