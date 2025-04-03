@@ -1,10 +1,9 @@
-let dom = $(document);
+const WIDTH = 1920;
+const HEIGHT = 1080;
 
-dom.ready(main);
-
-function main() {
-
-}
+document.addEventListener("DOMContentLoaded", function() {
+    startGame();
+});
 
 
 
