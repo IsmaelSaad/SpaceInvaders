@@ -13,5 +13,7 @@ function object(x, y, src) {
                             [fobj.x + fobj.img.naturalWidth, fobj.y], 
                             [fobj.x, fobj.y + fobj.img.naturalHeight],
                             [fobj.x + fobj.img.naturalWidth, fobj.y + fobj.img.naturalHeight]];
+        
+        
     }
 }
