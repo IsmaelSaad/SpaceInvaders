@@ -1,3 +1,6 @@
+var mx = 0;
+var my = 0;
+
 function startGame() {
     viewport.start();
 }
@@ -21,6 +24,7 @@ var viewport = {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
 };
+var mouse = new object(mx, my, "./media/enemy.png");
 
 var myEnemy = new object(50, 200, "./media/enemy.png");
 var myEnemy2 = new object(500, 200, "./media/enemy.png");
@@ -30,6 +34,7 @@ function updateGame() {
     viewport.frameNo++;
 
     myEnemy.drawObject(viewport.context);
+    mouse.drawObjectFoo(viewport.context, mx, my);
     myEnemy.detectCollision(myEnemy2);
 }
 
