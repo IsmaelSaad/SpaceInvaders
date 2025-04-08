@@ -22,12 +22,19 @@ var viewport = {
     }
 };
 
+var playerController = new player();
+
 var myEnemy = new object(50, 200, "./media/enemy.png");
 var myEnemy2 = new object(500, 200, "./media/enemy.png");
+var player1 = new object(200, 200, "./media/enemy.png");
 
-function updateGame() { 
+function updateGame() {
+    playerController.updatePlayer(player1);
+    
     viewport.clear();
     viewport.frameNo++;
+
+    player1.drawObject(viewport.context);
 
     myEnemy.drawObject(viewport.context);
     myEnemy.detectCollision(myEnemy2);
