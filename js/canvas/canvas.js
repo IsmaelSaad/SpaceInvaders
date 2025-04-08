@@ -35,7 +35,10 @@ function updateGame() {
 
     myEnemy.drawObject(viewport.context);
     mouse.drawObjectFoo(viewport.context, mx, my);
-    myEnemy.detectCollision(myEnemy2);
+    
+    console.log(myEnemy.detectCollision(mouse));
+    
+    
 }
 
 function intervaloPermitido(n) {
