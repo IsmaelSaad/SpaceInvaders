@@ -9,26 +9,27 @@ function player() {
         window.addEventListener('keypress', (event) => {
 
             if(event.key == 'd') {
-                //plyr.x = plyr.x + 0.5;
-                //console.log(plyr.x);
                 this.movementX = 1;
-            } else if (event.key == 'm' && egg == false) { //easter egg
+            } else if (event.key == 'a') {
+                this.movementX = -1;
+            }
+            
+            else if (event.key == 'm' && egg == false) { //easter egg
                 alert("MONDONGO");
                 egg = true;
             }
         });
 
         window.addEventListener('keyup', (event) => {
-
             if(event.key == 'd') {
+                this.movementX = 0;
+            } else if (event.key == 'a') {
                 this.movementX = 0;
             }
         });
 
-             plyr.x = plyr.x + this.speed * this.movementX;
-                console.log(plyr.x);
-
-
+        plyr.x = plyr.x + this.speed * this.movementX;
+        
     }
 }
 
