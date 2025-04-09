@@ -1,3 +1,6 @@
+var mx = 0;
+var my = 0;
+
 function startGame() {
     viewport.start();
 }
@@ -21,6 +24,7 @@ var viewport = {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
 };
+var mouse = new object(mx, my, "./media/enemy.png");
 
 var playerController1 = new player1();
 var playerController2 = new player2();
@@ -41,7 +45,11 @@ function updateGame() {
     player2.drawObject(viewport.context);
 
     myEnemy.drawObject(viewport.context);
-    myEnemy.detectCollision(myEnemy2);
+    mouse.drawObjectFoo(viewport.context, mx, my);
+    
+    console.log(myEnemy.detectCollision(mouse));
+    
+    
 }
 
 function intervaloPermitido(n) {
