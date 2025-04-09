@@ -22,19 +22,23 @@ var viewport = {
     }
 };
 
-var playerController = new player();
+var playerController1 = new player1();
+var playerController2 = new player2();
 
 var myEnemy = new object(50, 200, "./media/enemy.png");
 var myEnemy2 = new object(500, 200, "./media/enemy.png");
-var player1 = new object(200, 200, "./media/enemy.png");
+var player1 = new object(200, 950, "./media/player1.png");
+var player2 = new object(500, 950, "./media/player2.png");
 
 function updateGame() {
-    playerController.updatePlayer(player1);
+    playerController1.updatePlayer(player1);
+    playerController2.updatePlayer(player2);
     
     viewport.clear();
     viewport.frameNo++;
 
     player1.drawObject(viewport.context);
+    player2.drawObject(viewport.context);
 
     myEnemy.drawObject(viewport.context);
     myEnemy.detectCollision(myEnemy2);
