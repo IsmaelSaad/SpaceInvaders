@@ -1,3 +1,7 @@
+var bullet_pool = [];
+
+let lastAction= Date.now();
+
 function player2() {
 
     var egg = false;
@@ -26,11 +30,36 @@ function player2() {
             } else if (event.key == 'ArrowLeft') {
                 this.movementX = 0;
             }
+            if (event.key == ' ') {
+                const now = Date.now();
+                const elapsed = now -lastAction;
+
+                if (elapsed >= 500) {
+                    bullet_pool.push(new Bullet(plyr1.x, plyr1.y, "./media/rayo.png"));
+                    lastAction = now;
+                }
+            }
         });
 
         
 
         plyr1.x = plyr1.x + this.speed * this.movementX; // Calculos para mover al jugador (sumarle el valor a la pos. x)
+    }
+
+    class Bullet {
+        constructor(x, y, src) {
+            this.bull_obj = new object(x, y-50, src);
+        }
+
+        update(ctx) {
+            this.bull_obj.y -= 5;
+            this.bull_obj.drawObject(ctx);
+        }
+
+        kill() {
+
+
+        }
     }
 }
 

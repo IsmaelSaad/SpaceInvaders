@@ -1,3 +1,4 @@
+
 function player1() {
 
     var egg = false;
@@ -7,7 +8,7 @@ function player1() {
     this.movementX = 0;
 
     this.updatePlayer = function(plyr1) { //Creamos una función donde pondremos todo lo que queramos que haga un update
-        window.addEventListener('keypress', (event) => { // Ponemos un keydown, ya que si lo haciamos solo para que detectara una tecla no se movía seguido.
+        window.addEventListener('keydown', (event) => { // Ponemos un keydown, ya que si lo haciamos solo para que detectara una tecla no se movía seguido.
             if(event.key == 'd') { // If para detectar si esta pulsando la tecla
                 this.movementX = 1;
             } else if (event.key == 'a') {
@@ -30,12 +31,6 @@ function player1() {
         
 
         plyr1.x = plyr1.x + this.speed * this.movementX; // Calculos para mover al jugador (sumarle el valor a la pos. x)
-    }
-
-    class bullet {
-        constructor(plyr) {
-            
-        }
     }
 
    

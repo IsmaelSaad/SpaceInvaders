@@ -42,13 +42,9 @@ function updateGame() {
     viewport.clear();
     viewport.frameNo++;
 
-    if (bullets_pool.length > 0) {
-        for (let i = bullets_pool.length; i >= 0; i--){
-            bullets_pool[i].bullet().updateBullet();
-        }
+    for (let i = bullet_pool.length -1; i >= 0; i--) {
+        setInterval(bullet_pool[i].update(viewport.context), 2000);
     }
-    
-
 
     j1.drawObject(viewport.context);
 

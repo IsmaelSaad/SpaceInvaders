@@ -5,7 +5,7 @@ function object(x, y, src) {
     this.img = new Image();
     this.img.src = src;
 
-    this.drawObject = function(context, x ,y) {
+    this.drawObject = function(context, x, y, w, h) {
         if (x != null && y != null) {
             this.x = x;
             this.y = y;
