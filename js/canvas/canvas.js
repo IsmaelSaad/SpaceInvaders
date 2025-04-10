@@ -45,10 +45,8 @@ function updateGame() {
     player2.drawObject(viewport.context);
 
     myEnemy.drawObject(viewport.context);
-    mouse.drawObjectFoo(viewport.context, mx, my);
     
     console.log(myEnemy.detectCollision(mouse));
-    
     
 }
 
