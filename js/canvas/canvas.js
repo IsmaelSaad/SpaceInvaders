@@ -34,6 +34,7 @@ var myEnemy2 = new object(500, 200, "./media/enemy.png");
 var j1 = new object(200, 950, "./media/player1.png");
 var j2 = new object(500, 950, "./media/player2.png");
 
+
 function updateGame() {
     playerController1.updatePlayer(j1);
     playerController2.updatePlayer(j2);
@@ -41,13 +42,19 @@ function updateGame() {
     viewport.clear();
     viewport.frameNo++;
 
+    if (bullets_pool.length > 0) {
+        for (let i = bullets_pool.length; i >= 0; i--){
+            bullets_pool[i].bullet().updateBullet();
+        }
+    }
+    
+
+
     j1.drawObject(viewport.context);
+
     j2.drawObject(viewport.context);
 
     myEnemy.drawObject(viewport.context);
-    
-    console.log(myEnemy.detectCollision(mouse));
-    
 }
 
 function intervaloPermitido(n) {

@@ -1,6 +1,7 @@
 function object(x, y, src) {
     this.x = x;
     this.y = y;
+    this.active = true;
     this.img = new Image();
     this.img.src = src;
 
@@ -9,8 +10,12 @@ function object(x, y, src) {
             this.x = x;
             this.y = y;
         }
-        
-        context.drawImage(this.img, this.x, this.y, this.img.naturalWidth, this.img.naturalHeight);
+        if (this.active)
+            context.drawImage(this.img, this.x, this.y, this.img.naturalWidth, this.img.naturalHeight);
+    }
+
+    this.killObject = function (kill) {
+        this.active = false;
     }
 
     this.detectCollision = function(fobj) {
