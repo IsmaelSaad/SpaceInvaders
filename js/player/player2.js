@@ -7,10 +7,10 @@ function player2() {
     this.movementX = 0;
 
     this.updatePlayer = function(plyr1) { //Creamos una función donde pondremos todo lo que queramos que haga un update
-        window.addEventListener('keypress', (event) => { // Ponemos un keydown, ya que si lo haciamos solo para que detectara una tecla no se movía seguido.
-            if(event.key == 'd') { // If para detectar si esta pulsando la tecla
+        window.addEventListener('keydown', (event) => { // Ponemos un keydown, ya que si lo haciamos solo para que detectara una tecla no se movía seguido.
+            if(event.key == 'ArrowRight') { // If para detectar si esta pulsando la tecla
                 this.movementX = 1;
-            } else if (event.key == 'a') {
+            } else if (event.key == 'ArrowLeft') {
                 this.movementX = -1;
             }
             
@@ -21,9 +21,9 @@ function player2() {
         });
 
         window.addEventListener('keyup', (event) => { // Para que se pare cuando dejes de pulsar la tecla
-            if(event.key == 'd') {
+            if(event.key == 'ArrowRight') {
                 this.movementX = 0;
-            } else if (event.key == 'a') {
+            } else if (event.key == 'ArrowLeft') {
                 this.movementX = 0;
             }
         });

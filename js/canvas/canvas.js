@@ -31,18 +31,18 @@ var playerController2 = new player2();
 
 var myEnemy = new object(50, 200, "./media/enemy.png");
 var myEnemy2 = new object(500, 200, "./media/enemy.png");
-var player1 = new object(200, 950, "./media/player1.png");
-var player2 = new object(500, 950, "./media/player2.png");
+var j1 = new object(200, 950, "./media/player1.png");
+var j2 = new object(500, 950, "./media/player2.png");
 
 function updateGame() {
-    playerController1.updatePlayer(player1);
-    playerController2.updatePlayer(player2);
+    playerController1.updatePlayer(j1);
+    playerController2.updatePlayer(j2);
     
     viewport.clear();
     viewport.frameNo++;
 
-    player1.drawObject(viewport.context);
-    player2.drawObject(viewport.context);
+    j1.drawObject(viewport.context);
+    j2.drawObject(viewport.context);
 
     myEnemy.drawObject(viewport.context);
     

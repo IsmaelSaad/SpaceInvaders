@@ -5,9 +5,12 @@ function object(x, y, src) {
     this.img.src = src;
 
     this.drawObject = function(context, x ,y) {
-        this.x = x;
-        this.y = y;
-        context.drawImage(this.img, x, y, this.img.naturalWidth, this.img.naturalHeight);
+        if (x != null && y != null) {
+            this.x = x;
+            this.y = y;
+        }
+        
+        context.drawImage(this.img, this.x, this.y, this.img.naturalWidth, this.img.naturalHeight);
     }
 
     this.detectCollision = function(fobj) {
