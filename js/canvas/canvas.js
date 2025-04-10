@@ -45,9 +45,6 @@ function updateGame() {
     j2.drawObject(viewport.context);
 
     myEnemy.drawObject(viewport.context);
-    
-    console.log(myEnemy.detectCollision(mouse));
-    
 }
 
 function intervaloPermitido(n) {

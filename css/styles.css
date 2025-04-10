@@ -9,8 +9,33 @@
 }
 
 canvas {
-    border: 1px solid #d3d3d3;
-    background-color: #f1f1f1;
+    border: 1px solid #000000;
+    background-color: #71aaff83;
     width: 100%;
     height: auto;
 }
+
+.containerVidas {
+    min-height: 100px;
+    min-width: 100px;
+    display:flex; /* declaras que vas a usar flexbox*/
+    justify-content: center; /* centrado horizontal*/
+    align-items: center; /* centrado vertical */
+}
+
+.vidasP1 {
+    min-height: 100xp;
+    background-color: rgb(255, 251, 32);
+}
+
+.vidasP2 {
+    min-height: 100xp;
+    background-color: rgb(47, 68, 255);
+}
+
+.centrar {
+    display:flex; /* declaras que vas a usar flexbox*/
+    justify-content: center; /* centrado horizontal*/
+    align-items: center; /* centrado vertical */
+}
+
