@@ -1,5 +1,12 @@
 var enemy_pool = [];
 
+let enemyOffsetX = 0; 
+
+let enemyRespawnInterval = 40;
+
+let enemyDirection = 1; 
+let enemySpeed = 5;
+
 function createEnemies() {
     var og_pos_1 = [150, 50];
     var og_pos_2 = [150, 170];
@@ -18,7 +25,7 @@ function createEnemies() {
     }
 }
 
-function manageEnemies(bullet_pool) {
+function manageEnemies(bullet_pool, plyr) {
     for (let i = bullet_pool.length - 1; i >= 0; i--) {
         const bullet = bullet_pool[i].bull_obj;
 
@@ -34,7 +41,7 @@ function manageEnemies(bullet_pool) {
                 bullet.y < enemy.y + enemy.img.height &&
                 bullet.y + bullet.img.height > enemy.y
             ) {
-                
+                plyr.score += 10;
                 enemy.killObject();         
                 bullet_pool[i].kill();   
                 break; 
@@ -42,3 +49,34 @@ function manageEnemies(bullet_pool) {
         }
     }
 }
+
+function moveEnemies() {
+    let reachedEdge = false;
+
+    // Chequeo anticipado para cambio de dirección
+    for (let i = 0; i < enemy_pool.length; i++) {
+        const enemy = enemy_pool[i];
+
+        if (enemy.active) {
+            let newX = enemy.initialX + enemyOffsetX + (enemyDirection * enemySpeed);
+            if (newX + enemy.img.width >= viewport.canvas.width || newX <= 0) {
+                reachedEdge = true;
+                break;
+            }
+        }
+    }
+
+    if (reachedEdge) {
+        enemyDirection *= -1;
+    } else {
+        enemyOffsetX += enemyDirection * enemySpeed;
+    }
+
+    for (let i = 0; i < enemy_pool.length; i++) {
+        const enemy = enemy_pool[i];
+        if (enemy.active) {
+            enemy.x = enemy.initialX + enemyOffsetX;
+        }
+    }
+}
+

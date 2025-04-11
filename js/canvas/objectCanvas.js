@@ -2,10 +2,12 @@ class object {
     constructor(x, y, src) {
         this.x = x;
         this.y = y;
+        this.initialX = x;
         this.img = new Image();
         this.img.src = src;
         this.active = true;
     }
+    
 
     drawObject(ctx, x = this.x, y = this.y, w = this.img.width, h = this.img.height) {
         if (this.active) {

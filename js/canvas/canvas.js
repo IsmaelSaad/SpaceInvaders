@@ -28,13 +28,15 @@ var viewport = {
 var playerController1 = new player1();
 var playerController2 = new player2();
 var j1 = new object(200, 950, "./media/player1.png");
-var j2 = new object(500, 950, "./media/player2.png");
+var j2 = new object(1600, 950, "./media/player2.png");
 
 var enemy1 = new object(150, 50, "./media/enemy.png");
 
 function updateGame() {
     playerController1.updatePlayer(j1);
     playerController2.updatePlayer(j2);
+
+    moveEnemies();
     
     viewport.clear();
     viewport.frameNo++;
@@ -47,9 +49,9 @@ function updateGame() {
         bullet_pool_p2[i].update(viewport.context);
     }
 
-    manageEnemies(bullet_pool_p1);
+    manageEnemies(bullet_pool_p1, playerController1);
 
-    manageEnemies(bullet_pool_p2);
+    manageEnemies(bullet_pool_p2, playerController2);
 
     j1.drawObject(viewport.context);
     j2.drawObject(viewport.context);
@@ -57,5 +59,27 @@ function updateGame() {
     for (let i = enemy_pool.length -1; i >= 0; i--) {
         enemy_pool[i].drawObject(viewport.context);
     }
+
+    if (viewport.frameNo % enemyRespawnInterval === 0) {
+    // filtrar enemigos inactivos
+    let inactiveEnemies = enemy_pool.filter(e => !e.active);
+    
+    if (inactiveEnemies.length > 0) {
+        // filtra enemigos cuya posición reactivada estaría dentro del canvas
+        const visibleCandidates = inactiveEnemies.filter(e => {
+            const projectedX = e.initialX + enemyOffsetX;
+            return projectedX >= 0 && projectedX + e.img.width <= viewport.canvas.width;
+        });
+    
+        if (visibleCandidates.length > 0) {
+            const randomIndex = Math.floor(Math.random() * visibleCandidates.length);
+            const enemyToRespawn = visibleCandidates[randomIndex];
+            enemyToRespawn.x = enemyToRespawn.initialX + enemyOffsetX;
+            enemyToRespawn.active = true;
+        }
+    }
+    
+}
+
 }
 

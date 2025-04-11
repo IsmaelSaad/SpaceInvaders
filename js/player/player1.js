@@ -3,6 +3,7 @@ let lastAction_p1 = Date.now();
 
 function player1() {
     var egg = false;
+    this.score = 0;
     this.speed = 10;
     this.movementX = 0;
 
@@ -36,6 +37,10 @@ function player1() {
         plyr1.x = plyr1.x + this.speed * this.movementX;
     }
 
+    this.returnScore = function() {
+        return this.score;
+    }
+
     class Bullet {
         constructor(x, y, src) {
             this.active = true;
@@ -54,6 +59,8 @@ function player1() {
         }
     
         kill() {
+            this.bull_obj.x = -100;
+            this.bull_obj.y = -100;
             this.active = false;
             this.bull_obj.killObject(); // Optional, in case you handle object cleanup here
         }

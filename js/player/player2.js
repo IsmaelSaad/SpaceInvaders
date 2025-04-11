@@ -3,6 +3,7 @@ let lastAction_p2 = Date.now();
 
 function player2() {
     var egg = false;
+    this.score = 0;
     this.speed = 10;
     this.movementX = 0;
 
@@ -54,6 +55,8 @@ function player2() {
         }
     
         kill() {
+            this.bull_obj.x = -100;
+            this.bull_obj.y = -100;
             this.active = false;
             this.bull_obj.killObject(); // Optional, in case you handle object cleanup here
         }
