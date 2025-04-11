@@ -20,7 +20,7 @@ function player1() {
             const now = Date.now();
             const elapsed = now - lastAction_p1;
             if (elapsed >= 250) {
-                bullet_pool_p1.push(new Bullet1(j1.x, j1.y, "./media/rayo.png"));
+                bullet_pool_p1.push(new Bullet(j1.x, j1.y, "./media/rayo.png"));
                 lastAction_p1 = now;
             }
         }
@@ -36,16 +36,22 @@ function player1() {
         plyr1.x = plyr1.x + this.speed * this.movementX;
     }
 
-    class Bullet1 {
+    class Bullet {
         constructor(x, y, src) {
             this.bull_obj = new object(x + 25, y - 50, src);
         }
 
         update(ctx) {
-            this.bull_obj.y -= 25;
-            this.bull_obj.drawObject(ctx, this.bull_obj.x, this.bull_obj.y, this.bull_obj.img.naturalWidth * 0.5, this.bull_obj.img.naturalHeight * 0.5);
+            if (this.bull_obj.y > 0) {
+                this.bull_obj.y -= 25;
+                this.bull_obj.drawObject(ctx, this.bull_obj.x, this.bull_obj.y, this.bull_obj.img.naturalWidth * 0.5, this.bull_obj.img.naturalHeight * 0.5);
+            } else {
+                this.kill();
+            }
         }
 
-        kill() {}
+        kill() {
+            this.bull_obj.killObject();
+        }
     }
 }

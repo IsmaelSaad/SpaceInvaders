@@ -17,7 +17,7 @@ function object(x, y, src) {
             
     }
 
-    this.killObject = function (kill) {
+    this.killObject = function () {
         this.active = false;
     }
 

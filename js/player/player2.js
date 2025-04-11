@@ -42,10 +42,17 @@ function player2() {
         }
 
         update(ctx) {
-            this.bull_obj.y -= 25;
-            this.bull_obj.drawObject(ctx, this.bull_obj.x, this.bull_obj.y, this.bull_obj.img.naturalWidth * 0.5, this.bull_obj.img.naturalHeight * 0.5);
+            if (this.bull_obj.y > -25) {
+                this.bull_obj.y -= 25;
+                this.bull_obj.drawObject(ctx, this.bull_obj.x, this.bull_obj.y, this.bull_obj.img.naturalWidth * 0.5, this.bull_obj.img.naturalHeight * 0.5);
+            } else {
+                this.kill();
+            }
+            
         }
 
-        kill() {}
+        kill() {
+            this.bull_obj.killObject();
+        }
     }
 }
