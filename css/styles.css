@@ -1,5 +1,29 @@
+@font-face {
+    font-family: runescape;
+    src: url(../media/font.ttf);
+}
+body {
+    background-image: url('../media/background.jpg');
+    background-size: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.logo {
+    width: 30%;
+    height: auto;
+    padding: 10px;
+}
+
+.col-enemy {
+    background-image: url('../media/background2.jpg');
+    background-size: 100% 100%;
+    margin: 0;
+    padding: 0; 
+} 
+
 .col {
-    border: 1px solid black;
+    border: 0px solid black;
 }
 
 .viewport {
@@ -9,10 +33,11 @@
 }
 
 canvas {
-    border: 1px solid #000000;
-    background-color: #71aaff83;
+    border: 0px solid #000000;
+    background-color: #306e9dd6;
     width: 100%;
     height: auto;
+    border-radius: 20px;
 }
 
 .containerVidas {
@@ -24,12 +49,14 @@ canvas {
 }
 
 .vidasP1 {
-    min-height: 100xp;
+    border: 2px solid #000000;
+    min-height: 50px;
     background-color: rgb(255, 251, 32);
 }
 
 .vidasP2 {
-    min-height: 100xp;
+    border: 2px solid #000000;
+    min-height: 50px;
     background-color: rgb(47, 68, 255);
 }
 
@@ -38,4 +65,26 @@ canvas {
     justify-content: center; /* centrado horizontal*/
     align-items: center; /* centrado vertical */
 }
+
+.img-esquina {
+    position: fixed;
+    top: 0;
+    width: 10%; /* ajusta el tamaño según quieras */
+    height: auto;
+    z-index: 1000;
+}
+
+.izquierda {
+    left: 0;
+}
+
+.derecha {
+    right: 0;
+}
+
+.textoUI {
+    font-family: runescape;
+    font-size: x-large;
+}
+
 
