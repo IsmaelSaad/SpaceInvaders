@@ -16,7 +16,7 @@ function player1() {
             egg = true;
         }
 
-        if (event.key == 'w') {
+        if (event.key == ' ') {
             const now = Date.now();
             const elapsed = now - lastAction_p1;
             if (elapsed >= 250) {
@@ -38,10 +38,13 @@ function player1() {
 
     class Bullet {
         constructor(x, y, src) {
+            this.active = true;
             this.bull_obj = new object(x + 25, y - 50, src);
         }
-
+    
         update(ctx) {
+            if (!this.active) return;
+    
             if (this.bull_obj.y > 0) {
                 this.bull_obj.y -= 25;
                 this.bull_obj.drawObject(ctx, this.bull_obj.x, this.bull_obj.y, this.bull_obj.img.naturalWidth * 0.5, this.bull_obj.img.naturalHeight * 0.5);
@@ -49,9 +52,11 @@ function player1() {
                 this.kill();
             }
         }
-
+    
         kill() {
-            this.bull_obj.killObject();
+            this.active = false;
+            this.bull_obj.killObject(); // Optional, in case you handle object cleanup here
         }
     }
+    
 }

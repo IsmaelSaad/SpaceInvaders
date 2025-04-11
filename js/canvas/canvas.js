@@ -14,6 +14,9 @@ var viewport = {
         const juego_col = document.getElementById("col_juego");
         juego_col.appendChild(this.canvas);
         this.frameNo = 0;
+
+        createEnemies();
+
         this.interval = setInterval(updateGame, 20);
     },
 
@@ -27,6 +30,7 @@ var playerController2 = new player2();
 var j1 = new object(200, 950, "./media/player1.png");
 var j2 = new object(500, 950, "./media/player2.png");
 
+var enemy1 = new object(150, 50, "./media/enemy.png");
 
 function updateGame() {
     playerController1.updatePlayer(j1);
@@ -43,8 +47,15 @@ function updateGame() {
         bullet_pool_p2[i].update(viewport.context);
     }
 
-    j1.drawObject(viewport.context);
+    manageEnemies(bullet_pool_p1);
 
+    manageEnemies(bullet_pool_p2);
+
+    j1.drawObject(viewport.context);
     j2.drawObject(viewport.context);
+
+    for (let i = enemy_pool.length -1; i >= 0; i--) {
+        enemy_pool[i].drawObject(viewport.context);
+    }
 }
 
