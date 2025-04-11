@@ -4,6 +4,3 @@ const HEIGHT = 1080;
 document.addEventListener("DOMContentLoaded", function() {
     startGame();
 });
-
-
-
