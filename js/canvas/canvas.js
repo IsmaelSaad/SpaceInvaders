@@ -1,6 +1,3 @@
-var mx = 0;
-var my = 0;
-
 function startGame() {
     viewport.start();
 }
@@ -24,13 +21,9 @@ var viewport = {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
 };
-var mouse = new object(mx, my, "./media/enemy.png");
 
 var playerController1 = new player1();
 var playerController2 = new player2();
-
-var myEnemy = new object(50, 200, "./media/enemy.png");
-var myEnemy2 = new object(500, 200, "./media/enemy.png");
 var j1 = new object(200, 950, "./media/player1.png");
 var j2 = new object(500, 950, "./media/player2.png");
 
@@ -42,18 +35,16 @@ function updateGame() {
     viewport.clear();
     viewport.frameNo++;
 
-    for (let i = bullet_pool.length -1; i >= 0; i--) {
-        setInterval(bullet_pool[i].update(viewport.context), 2000);
+    for (let i = bullet_pool_p1.length -1; i >= 0; i--) {
+        bullet_pool_p1[i].update(viewport.context);
+    }
+
+    for (let i = bullet_pool_p2.length -1; i >= 0; i--) {
+        bullet_pool_p2[i].update(viewport.context);
     }
 
     j1.drawObject(viewport.context);
 
     j2.drawObject(viewport.context);
-
-    myEnemy.drawObject(viewport.context);
-}
-
-function intervaloPermitido(n) {
-    return (viewport.frameNo / n) % 1 === 0;
 }
 

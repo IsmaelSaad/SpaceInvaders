@@ -6,12 +6,15 @@ function object(x, y, src) {
     this.img.src = src;
 
     this.drawObject = function(context, x, y, w, h) {
-        if (x != null && y != null) {
-            this.x = x;
-            this.y = y;
+        
+        if (this.active) {
+            if ((x != null && y != null) || (w != null && h != null)) {
+                context.drawImage(this.img, x, y, w, h);
+            } else {
+                context.drawImage(this.img, this.x, this.y, this.img.naturalWidth, this.img.naturalHeight);
+            }
         }
-        if (this.active)
-            context.drawImage(this.img, this.x, this.y, this.img.naturalWidth, this.img.naturalHeight);
+            
     }
 
     this.killObject = function (kill) {
