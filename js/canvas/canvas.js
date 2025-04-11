@@ -37,6 +37,9 @@ function updateGame() {
     playerController2.updatePlayer(j2);
 
     moveEnemies();
+
+    updateScore(playerController1, true);
+    updateScore(playerController2, false);
     
     viewport.clear();
     viewport.frameNo++;
@@ -78,7 +81,6 @@ function updateGame() {
             enemyToRespawn.active = true;
         }
     }
-    
 }
 
 }
