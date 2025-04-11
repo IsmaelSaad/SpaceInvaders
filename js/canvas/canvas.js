@@ -58,9 +58,9 @@ function updateGame() {
         return;
     }
     
-    if (playerController1.score == 10) {
+    if (playerController1.score == 200) {
         updateLives(playerController1, playerController2, true);
-    } else if (playerController2.score == 10) {
+    } else if (playerController2.score == 200) {
         updateLives(playerController2, playerController1, false);
     }
 
