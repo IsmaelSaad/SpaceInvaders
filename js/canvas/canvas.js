@@ -1,3 +1,6 @@
+const WIDTH = 1920;
+const HEIGHT = 1080;
+
 function startGame() {
     viewport.start();
 }
@@ -30,9 +33,37 @@ var playerController2 = new player2();
 var j1 = new object(200, 950, "./media/player1.png");
 var j2 = new object(1600, 950, "./media/player2.png");
 
+var gameFinish = new object(400, 0, "./media/gameover.png");
+
 var enemy1 = new object(150, 50, "./media/enemy.png");
 
+var gameOver = false;
+
 function updateGame() {
+
+    if (playerController1.lives == 0 || playerController2.lives == 0) {
+        gameOver = true;
+        viewport.clear();
+    
+        viewport.context.fillStyle = "black";
+        viewport.context.font = "bold 48px runescape"; 
+    
+        if (playerController1.lives == 0) {
+            viewport.context.fillText("¡P2 ha ganado!", WIDTH/2 - 350, HEIGHT - 100);
+        } else {
+            viewport.context.fillText("¡P1 ha ganado!", WIDTH/2 - 350, HEIGHT - 100);
+        }
+    
+        gameFinish.drawObject(viewport.context);
+        return;
+    }
+    
+    if (playerController1.score == 10) {
+        updateLives(playerController1, playerController2, true);
+    } else if (playerController2.score == 10) {
+        updateLives(playerController2, playerController1, false);
+    }
+
     playerController1.updatePlayer(j1);
     playerController2.updatePlayer(j2);
 
@@ -68,7 +99,6 @@ function updateGame() {
     let inactiveEnemies = enemy_pool.filter(e => !e.active);
     
     if (inactiveEnemies.length > 0) {
-        // filtra enemigos cuya posición reactivada estaría dentro del canvas
         const visibleCandidates = inactiveEnemies.filter(e => {
             const projectedX = e.initialX + enemyOffsetX;
             return projectedX >= 0 && projectedX + e.img.width <= viewport.canvas.width;
@@ -81,6 +111,10 @@ function updateGame() {
             enemyToRespawn.active = true;
         }
     }
+    
+    
+
+    
 }
 
 }

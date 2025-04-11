@@ -3,6 +3,8 @@ let lastAction_p1 = Date.now();
 
 function player1() {
     var egg = false;
+    this.lives = 5;
+    this.wins = 0;
     this.score = 0;
     this.speed = 10;
     this.movementX = 0;
